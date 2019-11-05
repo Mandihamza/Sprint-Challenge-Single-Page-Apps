@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, List, Icon } from 'semantic-ui-react'
+import { Card, List } from 'semantic-ui-react'
 
 export default function EpisodeCard({ episode }) {
   return (
