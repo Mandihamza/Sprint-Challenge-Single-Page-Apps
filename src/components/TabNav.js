@@ -1,15 +1,58 @@
 import React from "react";
-import { Tab, Menu, Icon } from "semantic-ui-react";
-import { NavLink } from "react-router-dom";
+import { Menu } from "semantic-ui-react";
+import { 
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+ } from "react-router-dom";
 
-// TODO: Add missing menu/tabs/nav below
+import WelcomePage from "./WelcomePage";
+import CharacterList from "./CharacterList";
+import LocationsList from "./LocationsList";
+import EpisodeList from "./EpisodeList";
 
-// Review Semantic UI Component options for nav-like UI:
-// https://react.semantic-ui.com/collections/menu/
-// https://react.semantic-ui.com/modules/tab/
-// https://react.semantic-ui.com/elements/button/
-// https://react.semantic-ui.com/collections/breadcrumb/
 
 export default function TabNav() {
+
+    return ( 
+        <Router>   
+            <Menu tabular>
+            <Menu.Item>
+                <Link to="/">Home</Link>
+            </Menu.Item>
+            
+            <Menu.Item>
+              <Link to="/characters">Characters</Link>
+            </Menu.Item>
+            
+            <Menu.Item>
+              <Link to="/locations">Location</Link>
+            </Menu.Item>
+
+            <Menu.Item>
+            <Link to="/episodes">Episodes</Link>
+            </Menu.Item>
+        </Menu>
+
+        <Switch>
+            <Route exact path="/">
+                <WelcomePage />
+                </Route>
+            <Route path="/episodes">
+                <EpisodeList />
+                </Route>
+            <Route path="/characters">
+                <CharacterList />
+                </Route>
+            <Route path="/locations">
+            <LocationsList /> 
+            </Route>
+            <Route path="/episodes">
+            <EpisodeList /> 
+            </Route>
+        </Switch>
+        </Router>  
+      );    
 
 };
